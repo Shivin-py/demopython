@@ -24,9 +24,9 @@
             </div>
         </div>
     {% endif %}
-    <div class="mx_auto">
+    <div class="mx_auto text-center">
         {% if category %}
-        <img class="my_image" src="{{ category.image.url }}" alt="{{category.name}}" style="height:200; width:200;">
+        <img class="my_image" src="{{ category.image.url }}" alt="{{category.name}}" style="height:400px; width:400px;">
     </div>
         <br>
     <div>
@@ -69,6 +69,4 @@
         </div>
         <br>
     </div>
-
 {% endblock %}
-
