@@ -1,0 +1,138 @@
+{% extends 'movie.html' %}
+{% load static %}
+{% block metadescription %}
+    {{ movie.desc|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ movie.name }} - MOVIE WEBSITE
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="container">
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div style="min-width: 10rem">
+            <img src="{{ movie.image_url }}" alt="{{ movie.name }}" style="height: 300px; width: 250px">
+        </div>
+
+        <h2 class="movie_desc" style="color:white;">{{ movie.title }}</h2>
+            <a class="btn btn-secondary" href="{{ movie.trailer_link }}">Trailer</a>
+            {% if user.is_authenticated and user == movie.user %}
+        <a class="btn btn-secondary" href="{% url 'movieapp:delete' movie.id %}">DELETE MOVIE</a>
+        {% endif %}
+    </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div>
+                <h2 class="movie_desc" style="color:white">Movie Description</h2>
+            <p class="movie_desc" style="color:white">Description: {{ movie.desc }}</p>
+            <p class="movie_desc" style="color:white !important">GENRE : {{ movie.category }}</p>
+            <p class="movie_desc" style="color:white">ACTORS : {{ movie.actors }}</p>
+                <p class="movie_desc" style="color:white">RELEASE DATE : {{ movie.release_date }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+
+<div class="movie-container">
+    <div class="container" style="color:white;">
+        <p>{{ movie.description }}</p>
+
+        <h2>Reviews</h2>
+        <a class="btn btn-secondary" href="{% url 'movieapp:submit_review' c_slug=movie.category.slug movie_slug=movie.slug %}">Add Review</a>
+        <div class="reviews">
+            {% for review in movie.reviewrating_set.all %}
+                <div class="review">
+                    <p>{{ review.user }}: {{ review.review }}</p><br>
+                     <div style="overflow: auto;">
+                        <p style="float: right;">{{ review.created_at }}</p>
+                         <p>Rating: {{ review.rating }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No reviews yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock %}
+
+
+
+
+<!--<div class="container" style="color:white;">-->
+<!--    <p>{{ movie.description }}</p>-->
+
+<!--    <h2>Reviews</h2>-->
+<!--    {% for review in movie.reviewrating_set.all %}-->
+<!--        <p>{{ review.user }}: {{ review.review }} {{ review.rating }}</p>-->
+<!--        <p>{{ review.created_at }}</p>-->
+<!--    {% empty %}-->
+<!--        <p>No reviews yet.</p>-->
+<!--    {% endfor %}-->
+
+<!--</div>-->
+<!--<div class="row">-->
+<!--    <div class="col-md-9">-->
+
+<!--        <header class="section-heading">-->
+<!--            <h3>Add Reviews</h3>-->
+<!--        </header>-->
+
+<!--        <form action="" method="POST">-->
+<!--            {% csrf_token %}-->
+<!--            <h5 style="color:white;">Write your review</h5>-->
+<!--            <br>-->
+<!--            <div>-->
+<!--&lt;!&ndash;                rating stars&ndash;&gt;-->
+<!--                <label style="color:white;">How Do You Rate This Movie?</label>-->
+<!--                <br>-->
+<!--                <fieldset class="rating">-->
+<!--                    <input class="stars" type="radio" id="star5" name="rating" value="5" />-->
+<!--                    <label class = "full" for="star5" title="Awesome - 5 stars">5</label>-->
+<!--                    <input class="stars" type="radio" id="star4" name="rating" value="4" />-->
+<!--                    <label class = "full" for="star4" title="Pretty good - 4 stars">4</label>-->
+<!--                    <input class="stars" type="radio" id="star3" name="rating" value="3" />-->
+<!--                    <label class = "full" for="star3" title="average - 3 stars">3</label>-->
+<!--                    <input class="stars" type="radio" id="star2" name="rating" value="2" />-->
+<!--                    <label class = "full" for="star2" title="not bad - 2 stars">2</label>-->
+<!--                    <input class="stars" type="radio" id="star1" name="rating" value="1" />-->
+<!--                    <label class = "full" for="star1" title="bad - 1 star">1</label>-->
+
+<!--                    </fieldset>-->
+
+
+<!--                <span style="color:white;">Review Title:</span>-->
+<!--                <input type="text" class="form-control" name="subject">-->
+<!--                <br>-->
+<!--                <span style="color:white;">Review:</span>-->
+<!--                <textarea name="review" rows="4" class="form-control"></textarea>-->
+<!--                <br>-->
+<!--                <input type="submit" value="Submit Review">-->
+
+<!--            </div>-->
+<!--        </form>-->
+
+<!--        <article class="box-mb-3">-->
+<!--            <div class="icontext w-100">-->
+<!--                <div class="text">-->
+<!--                    <span class="date text float-md right" style="color:white;">24.04.2024</span>-->
+<!--                    <h6 class="mb-1" style="color:white;">-->
+<!--                        mike john-->
+<!--                    </h6>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mt-3" style="color:white;">-->
+<!--                <p>-->
+<!--                    dummy content-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </article>-->
+<!--    </div>-->
+<!--</div>-->

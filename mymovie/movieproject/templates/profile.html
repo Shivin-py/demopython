@@ -1,0 +1,36 @@
+{% extends 'movie.html' %}
+{% load static %}
+{% block metadescription %}
+    {{ movie.desc|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+{% if category %}
+{{ movie.name }} - MOVIE WEBSITE
+{% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="card">
+    <div class="container">
+        <p>Username: {{ user.username }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+    </div>
+    <a class="btn btn-secondary" href="{% url 'profile:edit' %}">Edit Profile</a><br>
+    <a class="btn btn-secondary" href="{% url 'profile:change_password' %}">Change Password</a>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends 'movie.html' %}
+{% load static %}
+{% block metadescription %}
+    MOVIE WEBSITE
+{% endblock %}
+{% block title %}
+    Search
+{% endblock %}
+{% block content %}
+<div>
+    <p class="text-center my_search_text" style="color:white;">You have searched for : <b>"{{ query }}"</b></p>
+</div>
+<div class="container">
+    <div class="row mx-auto">
+
+        {% for movie in movies %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-2 xol-lg-4">
+<!--            <div class="card">-->
+                <a href="{{ movie.get_url }}">
+                    <img class="card-img-top my_image" src="{{ movie.image_url }}" alt="{{ movie.title }}" style="min-height: 250px; max-height: 230px; width: auto; max-width: 180px;">
+                </a>
+<!--            </div>-->
+        </div>
+        {% empty %}
+        <div class="row mx-auto">
+            <p class="text-center my_search_text" style="color:white;">0 results found</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br><br><br><br><br>
+{% endblock %}

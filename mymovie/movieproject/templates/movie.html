@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-lZ9HCfNU3i4fX+ZGchEV6wVc+5h2ts7x2cXdYWlMVQyTzASANuoY6TfgbeF5BoA2" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/2e9eee7e9e.js" crossorigin="anonymous"></script>
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+    body {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(5,7,62,1) 35%, rgba(14,35,103,1) 100%);
+    background-size: cover;
+    overflow: auto;
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 6rem; /* Adjust this value to match the height of your footer */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+
+    color: white;
+    padding: 10px;
+    }
+
+    @import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+            fieldset, label { margin: 0; padding: 0; }
+            body{ margin: 20px; }
+            h1 { font-size: 1.5em; margin: 10px; }
+
+            .rating {
+                border: none;
+            }
+
+            .rating > input { display: none; }
+            .rating > label:before {
+                margin: 5px;
+                font-size: 1.25em;
+                font-family: FontAwesome;
+                display: inline-block;
+                content: "\f005";
+            }
+            .rating > .half:before {
+                content: "\f089";
+                position: absolute;
+            }
+
+            .rating > label {
+                color: #ddd;
+            }
+            .rating > input:checked ~ label,
+            .rating:not(:checked) > label:hover,
+            .rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+
+            .rating > input:checked + label:hover,
+            .rating > input:checked ~ label:hover,
+            .rating > label:hover ~ input:checked ~ label,
+            .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+.dropdown-item {
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.dropdown-menu {
+    display: none; /* Hide the dropdown menu by default */
+    position: absolute;
+    background-color: #343a40; /* Background color of the dropdown menu */
+    min-width: 160px; /* Set a minimum width for the dropdown menu */
+    z-index: 1; /* Ensure the dropdown menu appears above other content */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block; /* Display the dropdown menu when hovering over the nav-item */
+}
+.center-container {
+    text-align: center;
+    }
+
+.movie-container {
+
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.movie-container .container {
+    max-width: 800px; /* Limit the width of the content */
+    margin: 0 auto; /* Center the container */
+}
+
+.movie-container h2 {
+    color: #fff; /* White text color */
+}
+
+.movie-container .reviews {
+    margin-top: 10px; /* Add some space between description and reviews */
+}
+
+.movie-container .review {
+background-color: rgba(255, 255, 255, 0.1);    padding: 10px; /* Add padding */
+    margin-bottom: 10px; /* Add some space between reviews */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.movie-container .review p {
+    margin: 0; /* Remove default margin */
+}
+
+.movie-container p.no-reviews {
+    color: #ccc; /* Lighter text color for no reviews message */
+}
+
+.review-created-at {
+    color: white; /* White text color for the created_at timestamp */
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -20px; /* Adjust as needed to position it properly */
+    font-size: 14px; /* Optionally, adjust font size */
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px; /* Adjust as needed */
+    margin: 0 auto; /* Center the card */
+}
+
+.container {
+    color: white;
+}
+    </style>
+</head>
+<body>
+<div id="page-container">
+    <div id="content-wrap">
+        {% include 'navbar.html' %}
+        {% block content %}
+        {% endblock %}
+        {% include 'footer.html' %}
+    </div>
+    <br>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

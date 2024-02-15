@@ -1,0 +1,29 @@
+{% extends 'movie.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+        {{ category.desc|truncatewords:155 }}
+    {% else %}
+        Welcome to Movie Web site And Recommendation Platform
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if title %}
+        {{ category.name }} - Movie Website
+    {% else %}
+        see our new collection - Movie Website
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h4>Edit Your Profile</h4>
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-light">Save</button>
+
+  </form>
+</div>
+<br>
+<br><br><br><br>
+{% endblock %}

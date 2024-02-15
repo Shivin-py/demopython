@@ -1,0 +1,21 @@
+{% extends 'movie.html' %}
+{% load static %}
+{% block metadescription %}
+    {{ movie.desc|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ movie.name }} - MOVIE WEBSITE
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div class="container add_movie" style="color:white;">
+    <h1 class="text-center" style="color:white;">ADD MOVIE</h1>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-light">Add Movie</button>
+        </form>
+    <hr>
+</div><br><br><br>
+{% endblock %}
