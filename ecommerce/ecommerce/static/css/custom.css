@@ -1,5 +1,8 @@
 body{
     font-family: "Roboto", sans-serif;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /*** navbar ***/
@@ -16,12 +19,13 @@ body{
 }
 .my_footer{
     background-color: black;
-    height: 60px;
+    height: 55px;
+    margin-top: auto;
 }
 
 .my_footer p{
     color: white;
-    padding-top: 2opx;
+    padding-top: 15px;
     font-size: 14px;
 }
 
@@ -102,5 +106,3 @@ body{
 .my_custom_button{
     margin-top: 5px;
 }
-
-
